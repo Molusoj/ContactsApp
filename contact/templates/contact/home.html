@@ -1,0 +1,48 @@
+{% extends "contact/base.html" %}
+{% load static %}
+
+	
+{% block content %}
+	 <!--==========================
+     Contact Section
+    ============================-->
+		 <section id="about" class="section-bg">
+	      <div class="container-fluid">
+	        <div class="section-header">
+	          <h3 class="section-title">Contacts</h3>
+	          <span class="section-divider"></span>
+	        </div>
+
+	        <div class="row">
+	        	{% for contact in contacts %}
+
+	          <div class="col-lg-4 content wow fadeInRight">
+	            <div class="card">
+	            	<div class="card-header">
+	            		<img src="{% static 'contact/img/default.jpg' %}" class="card-img img-fluid" alt="">
+	            		<h1 class="card-info">{{contact.name}} </h1>
+	            	</div>
+	            	<div class="card-body">
+	                <ul>
+	                  <li><i class="fas fa-telephone"></i> <a href="#" class="card-link">{{contact.number}}</a></li>
+	                </ul>
+	                 <ul>
+	                  <li><i class="fas fa-mail"></i><a href="#" class="card-link">{{contact.email}}</a></li>
+	                </ul>
+	            	</div>
+	            	<div class="card-footer">
+	            		<p>{{contact.gender}}</p>
+	            	</div>
+	            </div>
+	          </div>	        	        		
+		{% endfor %}
+		</div>
+	</div>
+	</section><!-- #about -->
+
+   
+
+{% endblock content %}
+
+
+ 
