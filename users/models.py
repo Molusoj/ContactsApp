@@ -1,16 +1,16 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.urls import reverse
 from PIL import Image
 # Create your models here.
 
 
-class Contact(models.Model):
-    manager = models.ForeignKey(User, on_delete=models.CASCADE)
-    image = models.ImageField(default='contact-image/default.jpg', upload_to="contact-image")
-    name = models.CharField(max_length=150)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='profile_pics', default='profile_pics/default.jpg')
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50, blank=True)
+    other_name = models.CharField(max_length=50, blank=True)
     phone_number = models.CharField(blank=True, max_length=20)
-    email = models.EmailField(blank=True)
     gender = models.CharField(max_length=50, choices=(
         ('male', 'Male'),
         ('female', 'Female'),
@@ -18,10 +18,7 @@ class Contact(models.Model):
     ), default='Undisclosed')
 
     def __str__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('contact-detail', kwargs={'pk': self.pk})
+        return f'{self.user.username} Profile'
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)

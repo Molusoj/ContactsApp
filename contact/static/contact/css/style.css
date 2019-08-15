@@ -475,7 +475,7 @@ body.mobile-nav-active #mobile-nav-toggle {
 
 #intro-base {
   width: 100%;
-  height: 50vh;
+  height: 30vh;
   background: linear-gradient(45deg, rgba(29, 224, 153, 0.8), rgba(29, 200, 205, 0.8)), url("../img/intro-bg.jpg") center top no-repeat;
   background-size: cover;
   position: relative;
@@ -486,7 +486,7 @@ body.mobile-nav-active #mobile-nav-toggle {
   left: 0;
   top: 40%;
   right: 0;
-  height: calc(50% - 40px);
+  height: calc(60% - 40px);
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;

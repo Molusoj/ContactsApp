@@ -1,48 +1,59 @@
 {% extends "contact/base.html" %}
 {% load static %}
 
-	
+
 {% block content %}
 	 <!--==========================
      Contact Section
-    ============================-->
-		 <section id="about" class="section-bg">
-	      <div class="container-fluid">
-	        <div class="section-header">
-	          <h3 class="section-title">Contacts</h3>
-	          <span class="section-divider"></span>
-	        </div>
+     ============================-->
+     <section id="about" class="section-bg">
+     	<div class="container-fluid">
+     		<div class="section-header">
+     			<h3 class="section-title">Contacts</h3>
+     			<span class="section-divider"></span>
+     		</div>
 
-	        <div class="row">
-	        	{% for contact in contacts %}
+     		<div class="row">
+     			{% for contact in contacts %}
 
-	          <div class="col-lg-4 content wow fadeInRight">
-	            <div class="card">
-	            	<div class="card-header">
-	            		<img src="{% static 'contact/img/default.jpg' %}" class="card-img img-fluid" alt="">
-	            		<h1 class="card-info">{{contact.name}} </h1>
-	            	</div>
-	            	<div class="card-body">
-	                <ul>
-	                  <li><i class="fas fa-telephone"></i> <a href="#" class="card-link">{{contact.number}}</a></li>
-	                </ul>
-	                 <ul>
-	                  <li><i class="fas fa-mail"></i><a href="#" class="card-link">{{contact.email}}</a></li>
-	                </ul>
-	            	</div>
-	            	<div class="card-footer">
-	            		<p>{{contact.gender}}</p>
-	            	</div>
-	            </div>
-	          </div>	        	        		
-		{% endfor %}
-		</div>
-	</div>
-	</section><!-- #about -->
+     			<div class="col-md-3 content wow mb-2 fadeInRight">
+     				<div class="card">
+     					<div class="card-header">
+     						<img src=" {% if contact.image %}
+     						{{contact.image.url}}
+     						{% else %}
+     						{% static 'contact/img/default.jpg' %}
+     						{% endif %} " class="card-img img-fluid" alt="">
+     						<h1 class="card-info"><a href="{% url 'contact-detail' contact.id %}">{{contact.name}}</a></h1>
+     					</div>
+     					<div class="card-body">
+     						<ul>
+     							<li><i class="fas fa-phone"></i><a href="tel:{{contact.phone_number}}" class="card-link"> {{contact.phone_number}}</a></li>
+     							<li><i class="fas fa-at"></i><a href="mailto:{{contact.email}}" class="card-link"> {{contact.email}}</a></li>
+     							<li>{{contact.gender}}</a</li>
+     						</ul>
+     					</div>
+     					<div class="card-footer">
+     						<a href="{% url 'contact-detail' contact.id %}" class="btn btn-outline-info btn-lg">
+     							View
+     						</a>
+     						<a href="{% url 'contact-update' contact.id %}" class="btn btn-outline-secondary btn-lg">
+     							Edit
+     						</a>
+     						<a href="{% url 'contact-delete' contact.id %}" class="btn btn-outline-danger btn-lg">
+     							Delete
+     						</a>
+     					</div>
+     				</div>
+     			</div>	        	        		
+     			{% endfor %}
+     		</div>
+     	</div>
+     </section><!-- #about -->
 
-   
+     
 
-{% endblock content %}
+     {% endblock content %}
 
 
- 
+     

@@ -1,0 +1,62 @@
+{% extends "contact/base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+<section id="about" class="section-bg">
+	<div class="container">
+		<div class="section-header">
+			<h3 class="section-title text-capitalize">{{user}}</h3>
+			<span class="section-divider"></span>
+		</div>
+
+		<div class="row">
+
+			<div class="col-lg-5 ml-2 content wow fadeInRight">
+				<div class="card">
+					<div class="card-header">
+						<img src="{% if user.profile.image %}
+						{{user.profile.image.url}}
+						{% else %}
+						{% static 'contact/img/default.jpg' %}
+						{% endif %} " class="card-img img-fluid" alt="">
+						<h1 class="card-info">{{user.profile.first_name}} {{user.profile.other_name}} {{user.profile.last_name}}</h1>
+					</div>
+					<div class="card-body">
+						<ul>
+							<li><i class="fas fa-phone"></i><a href="tel:{{user.profile.phone_number}}" class="card-link"> {{user.profile.phone_number}}</a></li>
+							<li><i class="fas fa-at"></i><a href="mailto:{{user.email}}" class="card-link"> {{user.email}}</a></li>
+							<li class="text-capitalize"><i class="fas fa-tick"></i>{{user.profile.gender}}</li>
+							</ul>
+						</div>
+
+					</div>
+				</div>
+				<!-- User Info -->
+				<div class="col-lg-5 m-auto">
+				<form method="POST" enctype="multipart/form-data">
+					{% csrf_token %}
+					<fieldset class="form-group">
+						<legend class="border-bottom mb-4">Profile Info</legend>
+						{{ u_form | crispy }}
+						{{ p_form | crispy }}
+
+					</fieldset>
+					<div class="form-group">
+						<button class="btn btn-outline-info" type="submit">Update</button>
+					</div>
+				</form>
+			</div>
+				        	        		
+			</div>
+		</div>
+		<div class="container">
+		<div class="row">
+
+			
+		</div>
+		
+	</div>
+	</section><!-- #about -->
+
+
+	{% endblock content %}

@@ -1,0 +1,64 @@
+{% extends "contact/base.html" %}
+{% load static %}
+
+
+{% block content %}
+	 <!--==========================
+     Contact Section
+     ============================-->
+     {% if object.manager == request.user %}
+     <section id="about" class="section-bg">
+     	<div class="container">
+     		<div class="section-header">
+     			<h3 class="section-title">{{object.name}}</h3>
+     			<span class="section-divider"></span>
+     		</div>
+
+     		<div class="row">
+
+     			<div class="col-md-5 m-auto content wow fadeInRight">
+     				<div class="card">
+     					<div class="card-header">
+     						<img src=" {% if object.image %}
+     						{{object.image.url}}
+     						{% else %}
+     						{% static 'contact/img/default.jpg' %}
+     						{% endif %} " class="card-img img-fluid" alt="">
+     						<h1 class="card-info">{{object.name}}</h1>
+     					</div>
+     					<div class="card-body">
+     						<ul>
+     							<li><i class="fas fa-phone"></i><a href="tel:{{object.phone_number}}" class="card-link"> {{object.phone_number}}</a></li>
+     							<li><i class="fas fa-at"></i><a href="mailto:{{object.email}}" class="card-link"> {{object.email}}</a></li>
+     							<li><i class="fas fa-genderless"></i> {{object.gender}}</a</li>
+     						</ul>
+     					</div>
+     					<div class="card-footer">
+     						<a href="{% url 'contact-update' object.id %}" class="btn btn-outline-info mb-auto">
+     							Update Contact
+     						</a>
+                                   <a href="{% url 'contact-delete' object.id %}" class="btn btn-outline-danger m-auto">Delete
+                                   </a>
+     					</div>
+     				</div>
+     			</div>	        	        		
+     		</div>
+     	</div>
+     </section><!-- #about -->
+      {% else %}
+    <article class="section-bg">
+     <div class="container">
+               <div class="section-header">
+                  <h2 class="font-weight-light text-center">You don't have access to this page</h2>
+                    <span class="section-divider"></span>
+               </div>
+
+    </article>
+    {% endif %}
+
+     
+
+     {% endblock content %}
+
+
+     
