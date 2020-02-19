@@ -29,10 +29,10 @@
 					<li class="menu-active"><a href="{% url 'contact-home' %}">Home</a></li>
 					<li class="menu-has-children">Contact Me
             <ul>
-              <li><a href="#"><i class="fab fa-github"></i> Github</a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-              <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-              <li><a href="#"><i class="fab fa-gmail"></i> Email Me</a></li>
+              <li><a href="https://github.com/Molusoj" target="_blank"><i class="fab fa-github"></i> Github</a></li>
+              <li><a href="https://www.instagram.com/molusoj/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a></li>
+              <li><a href="https://twitter.com/molusoj_" target="_blank"><i class="fab fa-twitter"></i> Twitter</a></li>
+              <li><a href="mailto:olusoji200@gmail.com"><i class="fas fa-envelope"></i> Email Me</a></li>
             </ul>
           </li>
           {% if user.is_authenticated %}
@@ -45,8 +45,8 @@
           <li><a href="{% url 'register' %}">Register</a> </li>
 
           {% endif %}
-					
-					
+
+
 				</ul>
 			</nav><!-- #nav-menu-container -->
 		</div>
@@ -64,14 +64,14 @@
     	{% if messages %}
     	{% for message in messages %}
     	<div class="container">
-    		<div class="alert alert-{{message.tags}}"> {{message}}</div>	
+    		<div class="alert alert-{{message.tags}}"> {{message}}</div>
     	</div>
-    	
+
     	{% endfor %}
     	{% endif %}
     	{% block content %}
 
-    	{% endblock content %}	
+    	{% endblock content %}
     </main>
 
     <!--==========================
@@ -97,9 +97,9 @@
   <div class="col-lg-6">
   	<nav class="footer-links text-lg-right text-center pt-2 pt-lg-0">
   		<a href="{% url 'contact-home' %}" class="scrollto">Home</a>
-  		<a href="#"><i class="fab fa-github"></i> Github</a>
-  		<a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-  		<a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+  		<a href="https://github.com/Molusoj" target="_blank" ><i class="fab fa-github"></i> Github</a>
+  		<a href="https://www.instagram.com/molusoj/" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+  		<a href="https://twitter.com/molusoj_" target="_blank"><i class="fab fa-twitter"></i> Twitter</a>
   	</nav>
   </div>
 </div>
